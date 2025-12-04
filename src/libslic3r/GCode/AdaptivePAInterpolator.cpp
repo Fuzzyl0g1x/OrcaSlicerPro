@@ -101,7 +101,7 @@ double AdaptivePAInterpolator::operator()(double flow_rate, double acceleration)
     if (acc_values.size() < 2) {
         // Special case: Only one acceleration value
         if (acc_values.size() == 1) {
-            return std::round(pa_values[0] * 1000.0) / 1000.0; // Rounded to 3 decimal places
+            return std::round(pa_values[0] * 100000.0) / 100000.0; // Rounded to 5 decimal places
         }
         return -1; // Error: Not enough data points for interpolation
     }
@@ -110,5 +110,5 @@ double AdaptivePAInterpolator::operator()(double flow_rate, double acceleration)
     // Use the estimated PA values from the for loop above and their corresponding accelerations to
     // generate the new PCHIP model. Then run this model to interpolate the PA value for the given acceleration value.
     PchipInterpolatorHelper pa_accel_interpolator(acc_values, pa_values);
-    return std::round(pa_accel_interpolator.interpolate(acceleration) * 1000.0) / 1000.0; // Rounded to 3 decimal places
+    return std::round(pa_accel_interpolator.interpolate(acceleration) * 100000.0) / 100000.0; // Rounded to 5 decimal places
 }
