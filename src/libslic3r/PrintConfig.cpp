@@ -7878,7 +7878,7 @@ void DynamicPrintConfig::normalize_fdm_1()
 
     if (auto *opt_gcode_resolution = this->opt<ConfigOptionFloat>("resolution", false); opt_gcode_resolution)
         // Resolution will be above 1um.
-        opt_gcode_resolution->value = std::max(opt_gcode_resolution->value, 0.001);
+        opt_gcode_resolution->value = std::max(opt_gcode_resolution->value, 0.00001);
 
     return;
 }
