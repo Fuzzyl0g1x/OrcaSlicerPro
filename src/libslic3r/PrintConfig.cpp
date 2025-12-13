@@ -7805,7 +7805,7 @@ void DynamicPrintConfig::normalize_fdm(int used_filaments)
 
     if (auto *opt_gcode_resolution = this->opt<ConfigOptionFloat>("resolution", false); opt_gcode_resolution)
         // Resolution will be above 1um.
-        opt_gcode_resolution->value = std::max(opt_gcode_resolution->value, 0.001);
+        opt_gcode_resolution->value = std::max(opt_gcode_resolution->value, 0.00001); //Limit G-code resolution (under the "Precision" category) to 5 decimal places
 
     // BBS
     ConfigOptionBool* ept_opt = this->option<ConfigOptionBool>("enable_prime_tower");
